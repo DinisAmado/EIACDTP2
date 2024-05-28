@@ -35,10 +35,10 @@ df_together['Bathroom'] = df_together['Bathroom'].fillna(media_casas_de_banho)
 df_together['Bedroom'] = df_together['Bedroom'].fillna(media_quartos)
 
 # Salvar o DataFrame combinado e atualizado em um novo arquivo CSV
-df_together.to_csv('csv_combinado.csv', index=False)
+#df_together.to_csv('csv_combinado.csv', index=False)
 
 # Imprimir o DataFrame atualizado
-print(df_together)
+#print(df_together)
 
 #Ver se ainda existe missing values no csv_combinado
 missing_values = df_together.isnull().sum()
