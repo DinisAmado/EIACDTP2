@@ -21,9 +21,9 @@ df_together['DateSold'] = df_together['DateSold'].apply(converter_para_ano)
 
 # Função para calcular as médias das colunas especificadas
 def calcular_medias(df):
-    media_data_de_venda = df['YearBuilt'].mean()
-    media_casas_de_banho = df['Bathroom'].mean()
-    media_quartos = df['Bedroom'].mean()
+    media_data_de_venda = int(round(df['YearBuilt'].mean()))
+    media_casas_de_banho = int(round(df['Bathroom'].mean()))
+    media_quartos = int(round(df['Bedroom'].mean()))
     return media_data_de_venda, media_casas_de_banho, media_quartos
 
 # Calcular as médias
