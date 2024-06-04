@@ -1,8 +1,4 @@
-from df_concat import *
-import numpy as np
-
-
-# Função para remover outliers usando o método IQR
+#Função para remover outliers usando o método IQR
 def remover_outliers(df, coluna):
     Q1 = df[coluna].quantile(0.25)
     Q3 = df[coluna].quantile(0.75)

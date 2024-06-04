@@ -5,12 +5,12 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 
 # Passo 1: Carregar os dados normalizados
-df_normalized = pd.read_csv('csv_normalized.csv')
+df_normalized2 = pd.read_csv('csv_normalized2.csv')
 
 # Passo 2: Definir as features (X) e a variável alvo (y)
-features = ['Bedroom', 'Bathroom', 'DateSold', 'YearBuilt']
-X = df_normalized[features]
-y = df_normalized['Price']
+features = ['Bedroom', 'Bathroom', 'YearBuilt']
+X = df_normalized2[features]
+y = df_normalized2['Price']
 
 # Passo 3: Dividir os dados em treino, validação e teste
 X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.3, random_state=42)

@@ -1,22 +1,19 @@
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 
 # Carregar o CSV sem outliers
 df = pd.read_csv('csv_sem_outliers.csv')
 
-# Definir as features (X) e a variável alvo (y)
-features = ['Bedroom', 'Bathroom', 'DateSold', 'YearBuilt', 'Price']
-X = df[features]
+# Colunas a serem normalizadas
+colunas_para_normalizar = ["Price", "Bedroom", "Bathroom", "YearBuilt", "DateSold"]
 
-# Padronizar as features
-scaler = StandardScaler()
-X_normalized = scaler.fit_transform(X)
+# Inicializar o MinMaxScaler
+scaler = MinMaxScaler()
 
-# Converter de volta para um DataFrame
-df_normalized = pd.DataFrame(X_normalized, columns=features)
+# Normalizar as colunas
+df[colunas_para_normalizar] = scaler.fit_transform(df[colunas_para_normalizar])
 
-# Salvar o DataFrame normalizado em um novo arquivo CSV
-df_normalized.to_csv('csv_normalized.csv', index=False)
+# Salvar o dataframe normalizado em um novo CSV
+df.to_csv('csv_normalized2.csv', index=False)
 
-# Verificar os primeiros registros do DataFrame normalizado
-print(df_normalized.head())
+print("Dados normalizados e salvos em 'csv_normalized2.csv'")
