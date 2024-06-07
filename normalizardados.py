@@ -5,7 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 df = pd.read_csv('csv_sem_outliers.csv')
 
 # Colunas a serem normalizadas
-colunas_para_normalizar = ["Price", "Bedroom", "Bathroom", "YearBuilt", "DateSold"]
+colunas_para_normalizar = ["Price", "Bedroom", "Bathroom", "Area"]
 
 # Inicializar o MinMaxScaler
 scaler = MinMaxScaler()

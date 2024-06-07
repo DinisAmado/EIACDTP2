@@ -44,33 +44,8 @@ plt.show()
 
 #Gráfico para ver o preço em função dos anos de construção:
 
-df_grouped = df_together.groupby('YearBuilt')['Price'].mean().reset_index()
+df_grouped = df_together.groupby('Area')['Price'].mean().reset_index()
 
 # Criar o gráfico de barras
 fig, ax = plt.subplots(figsize=(10, 6))
-ax.bar(df_grouped['YearBuilt'], df_grouped['Price'], color='skyblue')
-
-# Adicionar título e rótulos
-ax.set_title('Preço Médio em Função do Número do Ano de Construção')
-ax.set_xlabel('Ano de Construção')
-ax.set_ylabel('Preço Médio')
-
-# Mostrar o gráfico
-plt.show()
-
-
-#Gráfico para ver os preços em função do ano de venda:
-
-df_grouped = df_together.groupby('DateSold')['Price'].mean().reset_index()
-
-# Criar o gráfico de barras
-fig, ax = plt.subplots(figsize=(10, 6))
-ax.bar(df_grouped['DateSold'], df_grouped['Price'], color='skyblue')
-
-# Adicionar título e rótulos
-ax.set_title('Preço Médio em Função do Número do Ano de Venda')
-ax.set_xlabel('Ano de Venda')
-ax.set_ylabel('Preço Médio')
-
-# Mostrar o gráfico
-plt.show()
+ax.bar(df_grouped['Area'], df_grouped['Price'], color='skyblue')

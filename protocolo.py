@@ -1,6 +1,7 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 
@@ -8,7 +9,7 @@ import matplotlib.pyplot as plt
 df_normalized2 = pd.read_csv('csv_normalized2.csv')
 
 # Passo 2: Definir as features (X) e a variável alvo (y)
-features = ['Bedroom', 'Bathroom', 'YearBuilt']
+features = ['Bedroom', 'Bathroom', 'Area']
 X = df_normalized2[features]
 y = df_normalized2['Price']
 
@@ -29,6 +30,14 @@ print(f'MSE na validação: {mse_val}')
 y_test_pred = model.predict(X_test)
 mse_test = mean_squared_error(y_test, y_test_pred)
 print(f'MSE no teste: {mse_test}')
+
+# Calcular o R² para os dados de validação
+r2_val = r2_score(y_val, y_val_pred)
+print(f'R² na validação: {r2_val}')
+
+# Calcular o R² para os dados de teste
+r2_test = r2_score(y_test, y_test_pred)
+print(f'R² no teste: {r2_test}')
 
 # Passo 6: Visualizar os resultados
 # Gráfico de previsões vs valores reais (validação)
@@ -55,8 +64,8 @@ plt.figure(figsize=(10, 5))
 plt.scatter(y_val_pred, residuos_val, alpha=0.5)
 plt.axhline(y=0, color='r', linestyle='--')
 plt.xlabel('Previsões')
-plt.ylabel('Resíduos')
-plt.title('Resíduos vs Previsões (Validação)')
+plt.ylabel('Reais')
+plt.title('Reais vs Previsões (Validação)')
 plt.show()
 
 # Gráfico de resíduos (teste)
@@ -65,6 +74,6 @@ plt.figure(figsize=(10, 5))
 plt.scatter(y_test_pred, residuos_test, alpha=0.5)
 plt.axhline(y=0, color='r', linestyle='--')
 plt.xlabel('Previsões')
-plt.ylabel('Resíduos')
-plt.title('Resíduos vs Previsões (Teste)')
+plt.ylabel('Reais')
+plt.title('Reais vs Previsões (Teste)')
 plt.show()
