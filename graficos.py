@@ -42,10 +42,13 @@ ax.set_ylabel('Preço Médio')
 plt.show()
 
 
-#Gráfico para ver o preço em função dos anos de construção:
+#Gráfico para ver o preço em função da área:
 
 df_grouped = df_together.groupby('Area')['Price'].mean().reset_index()
 
 # Criar o gráfico de barras
 fig, ax = plt.subplots(figsize=(10, 6))
 ax.bar(df_grouped['Area'], df_grouped['Price'], color='skyblue')
+
+# Mostrar o gráfico
+plt.show()

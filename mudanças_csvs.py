@@ -24,7 +24,7 @@ nova_ordem = ['Price', 'Area', 'Bedroom', 'Bathroom']
 df = df[nova_ordem]
 
 # Salvar o DataFrame resultante de volta para um arquivo CSV, se necessário
-#df.to_csv('df1.csv', index=False)
+df.to_csv('df1.csv', index=False)
 
 df2 = pd.read_csv('Housing.csv')
 
@@ -52,7 +52,7 @@ nova_ordem = ['Price', 'Area', 'Bedroom', 'Bathroom']
 df2 = df2[nova_ordem]
 
 # Salvar o DataFrame resultante de volta para um arquivo CSV, se necessário
-#df2.to_csv('df12.csv', index=False)
+df2.to_csv('df12.csv', index=False)
 
 
 
