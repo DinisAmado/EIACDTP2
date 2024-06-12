@@ -10,10 +10,10 @@ df = pd.read_csv('normalized.csv')
 # Análise Gráfica dos Resultados:
 
 # Resíduos para regressão linear
-residuals_lr = YTest - PrevYRl
+ResidualsRl = YTest - PrevYRl
 
 plt.figure(figsize=(10, 6))
-sns.scatterplot(x=PrevYRl, y=residuals_lr)
+sns.scatterplot(x=PrevYRl, y=ResidualsRl)
 plt.axhline(y=0, color='r', linestyle='--')
 plt.xlabel('Predicted Values')
 plt.ylabel('Residuals')
@@ -21,21 +21,20 @@ plt.title('Residuals vs Predicted Values (Linear Regression)')
 plt.show()
 
 # Importância do recurso da Random Forest
-importance = pd.DataFrame(ModeloRf.feature_importances_,
-                                   columns=['importance']).sort_values('importance', ascending=False)
+Importance = pd.DataFrame(ModeloRf.feature_importances_, index=XTrain.columns, columns=['importance']).sort_values('importance', ascending=False)
 
 plt.figure(figsize=(10, 6))
-sns.barplot(x=importance['importance'], y=importance.index)
+sns.barplot(x=Importance.importance, y=Importance.index)
 plt.title("Feature Importances in Random Forest")
 plt.xlabel("Importance")
 plt.ylabel("Feature")
 plt.show()
 
 # Resíduos para Floresta Aleatória
-residuals_rf = YTest - PrevYRl
+ResidualsRf = YTest - PrevYRf
 
 plt.figure(figsize=(10, 6))
-sns.scatterplot(x=PrevYRl, y=residuals_rf)
+sns.scatterplot(x=PrevYRf, y=ResidualsRf)
 plt.axhline(y=0, color='r', linestyle='--')
 plt.xlabel('Predicted Values')
 plt.ylabel('Residuals')
@@ -53,7 +52,7 @@ plt.show()
 
 # Distribuição de Residuos para a Random Forest
 plt.figure(figsize=(10, 6))
-sns.histplot(residuals_rf, kde=True, bins=30)
+sns.histplot(ResidualsRf, kde=True, bins=30)
 plt.title('Distribution of Residuals (Random Forest)')
 plt.xlabel('Residuals')
 plt.ylabel('Frequency')
